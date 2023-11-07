@@ -1,53 +1,102 @@
-﻿
-<h4>Tasks</h4>
-<table border="1">
-    <tr>
-        <td>Id</td>
-        <td>Description</td>
-        <td>Date Started</td>
-        <td>Date Completed</td>
-        <td>Status</td>
-    </tr>
-    <tr id="r1">
-        <td>1</td>
-        <td>Task 1</td>
-        <td>09/10/2022</td>
-        <td>09/12/2022</td>
-        <td style="background-color: #00FF00">Good</td>
-        <td><input type="button" value="remove" onclick="r1.style.display = 'none'"</td>
-    </tr>
-    <tr id="r2">
-        <td>2</td>
-        <td>Task 2</td>
-        <td>09/15/2022</td>
-        <td>09/17/2022</td>
-        <td style="background-color: #FFFF00">Ok</td>
-        <td><input type="button" value="remove" onclick="r2.style.display = 'none'"</td>
-    </tr>
-    <tr id="r3">
-        <td>3</td>
-        <td>Task 3</td>
-        <td colspan="2">---------</td>
-        <td style="background-color: #FF0000" id="fatal">Fatal</td>
-        <td><input type="button" value="remove" onclick="r3.style.display = 'none'"</td>
-        <script>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h4 {
+            margin-top: 25px;
+            text-align: center;
+        }
 
-            function blinkOn() {
-                fatal.style.backgroundColor = '#FF0000';
-                setTimeout(blinkOff, 500);
-            }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-            function blinkOff() {
-                fatal.style.backgroundColor = '#FFFFFF';
-                setTimeout(blinkOn, 500);
-            }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
 
-            blinkOn();
+        th {
+            background-color: #f2f2f2;
+        }
 
-        </script>
-    </tr>
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
+        tr#r3 {
+            animation: blink 1s infinite;
+        }
 
+        @keyframes blink {
+            0% { background-color: #FF0000; }
+            50% { background-color: #FFFFFF; }
+            100% { background-color: #FF0000; }
+        }
 
-</table>
+        input[type="button"] {
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+        }
 
+        input[type="button"]:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <h4>Tasks</h4>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Date Started</th>
+            <th>Date Completed</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr id="r1">
+            <td>1</td>
+            <td>Task 1</td>
+            <td>09/10/2022</td>
+            <td>09/12/2022</td>
+            <td style="background-color: #00FF00">Good</td>
+            <td><input type="button" value="remove" onclick="document.getElementById('r1').style.display = 'none'"></td>
+        </tr>
+        <tr id="r2">
+            <td>2</td>
+            <td>Task 2</td>
+            <td>09/15/2022</td>
+            <td>09/17/2022</td>
+            <td style="background-color: #FFFF00">Ok</td>
+            <td><input type="button" value="remove" onclick="document.getElementById('r2').style.display = 'none'"></td>
+        </tr>
+        <tr id="r3">
+            <td>3</td>
+            <td>Task 3</td>
+            <td colspan="2">---------</td>
+            <td style="background-color: #FF0000" id="fatal">Fatal</td>
+            <td><input type="button" value="remove" onclick="document.getElementById('r3').style.display = 'none'"></td>
+        </tr>
+    </table>
+
+    <script>
+
+        function blinkOn() {
+            document.getElementById('fatal').style.backgroundColor = '#FF0000';
+            setTimeout(blinkOff, 500);
+        }
+
+        function blinkOff() {
+            document.getElementById('fatal').style.backgroundColor = '#FFFFFF';
+            setTimeout(blinkOn, 500);
+        }
+
+        blinkOn();
+
+    </script>
+</body>
+</html>
