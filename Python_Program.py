@@ -7,8 +7,8 @@ import random
 import mysql.connector
 
 # switch mysql/psycopg2
-# use_mysql = False
-use_mysql = True
+use_mysql = False
+# use_mysql = True
 
 class CacheTemperatures:
     cache_max_size = 5
