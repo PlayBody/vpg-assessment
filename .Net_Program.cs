@@ -81,6 +81,11 @@ namespace TestTemp
                             minCacheIndex = cache.index;
                             minCachePosition = position;
                         }
+                        else if (cache == null)
+                        {
+                            temperatureCacheList[position] = new CacheTemperatures(fromDateTime, toDateTime, temps);
+                            return;
+                        }
                     }
                     temperatureCacheList[minCachePosition]!.Update(fromDateTime, toDateTime, temps);
                 }

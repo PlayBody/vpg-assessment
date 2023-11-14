@@ -40,6 +40,9 @@ class CacheTemperatures:
                 if cache is not None and cache.cache_index < min_cache_index:
                     min_cache_index = cache.cache_index
                     min_cache_position = postion
+                elif cache is None:
+                    cls.temperature_cache_list[postion] = CacheTemperatures(from_datetime, to_datetime, temps)
+                    return
             cls.temperature_cache_list[min_cache_position].update(from_datetime, to_datetime, temps)
     @classmethod
     def get_cache(cls, from_datetime: datetime, to_datetime: datetime):
